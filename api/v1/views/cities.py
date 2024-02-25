@@ -1,4 +1,6 @@
-reate a new view for City objects - handles all default RESTful API actions.
+#!/usr/bin/python3
+'''
+Create a new view for City objects - handles all default RESTful API actions.
 '''
 
 # Import necessary modules
