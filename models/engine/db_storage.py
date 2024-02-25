@@ -14,6 +14,7 @@ from models.user import User
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
+from sqlalchemy import MetaData
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {"Amenity": Amenity, "City": City,
