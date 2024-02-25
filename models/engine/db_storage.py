@@ -14,7 +14,6 @@ from models.user import User
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
-from sqlalchemy import MetaData
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {"Amenity": Amenity, "City": City,
@@ -77,7 +76,9 @@ class DBStorage:
         self.__session.remove()
 
     def get(self, cls, id):
-        """Retrieve one object"""
+        '''get:
+        retrieve an object from the file storage by class and id.
+        '''
         if cls in classes.values() and id and type(id) == str:
             d_obj = self.all(cls)
             for key, value in d_obj.items():
@@ -86,7 +87,9 @@ class DBStorage:
         return None
 
     def count(self, cls=None):
-        """Count the number of objects in storage"""
+        '''count:
+        count the number of objects in storage matching the given class.
+        '''
         data = self.all(cls)
         if cls in classes.values():
             data = self.all(cls)
