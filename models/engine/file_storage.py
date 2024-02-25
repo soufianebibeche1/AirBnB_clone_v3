@@ -12,7 +12,6 @@ from models.review import Review
 from models.state import State
 from models.user import User
 from hashlib import md5
-import logging
 
 classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
@@ -60,12 +59,8 @@ class FileStorage:
                 jo = json.load(f)
             for key in jo:
                 self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
-        except FileNotFoundError:
-            logging.warning("File not found: {}".format(self.__file_path))
-        except json.JSONDecodeError:
-            logging.error("Err decoding JSON file:{}".format(self.__file_path))
-        except Exception as e:
-            logging.error("An unexpected error occurred: {}".format(e))
+        except:
+            pass
 
     def delete(self, obj=None):
         """Delete obj from __objects if it’s inside"""
